@@ -1,4 +1,4 @@
-package com.kodilla.stream.beautifier;
+/*package com.kodilla.stream.beautifier;
 
 public class StreamMain {
 
@@ -9,3 +9,4 @@ public class StreamMain {
     }
 
 }
+*/
