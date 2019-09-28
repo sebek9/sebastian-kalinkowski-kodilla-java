@@ -5,9 +5,15 @@ import com.kodilla.stream.lambda.ExecuteSaySomething;
 import com.kodilla.stream.lambda.Processor;
 
 
+import com.kodilla.stream.lambda.ExpressionExecutor;
+
 public class StreamMain {
     public static void main(String[] args) {
-        Processor processor = new Processor();
-        processor.execute(() -> System.out.println("This is an example text."));
+        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
     }
 }
