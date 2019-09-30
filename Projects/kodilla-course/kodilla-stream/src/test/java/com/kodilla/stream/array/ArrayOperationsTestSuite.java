@@ -14,4 +14,16 @@ public class ArrayOperationsTestSuite {
         //Then
         Assert.assertEquals(averageExpected, average, 0.0001);
     }
+
+    @Test
+    public void testEmptyArray(){
+        //Given
+        int numbers [] = {0};
+        double averageExpected = 0;
+        //When
+        double average = ArrayOperations.getAverage(numbers);
+        //Then
+        Assert.assertEquals(averageExpected, average, 0.0001);
+    }
 }
+
