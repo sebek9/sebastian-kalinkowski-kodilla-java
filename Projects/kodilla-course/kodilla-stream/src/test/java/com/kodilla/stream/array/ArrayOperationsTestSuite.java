@@ -1,7 +1,9 @@
 package com.kodilla.stream.array;
 
+
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.ArrayList;
 
 public class ArrayOperationsTestSuite {
     @Test
@@ -16,14 +18,20 @@ public class ArrayOperationsTestSuite {
     }
 
     @Test
-    public void testEmptyArray(){
+    public void testEmptyArray() {
         //Given
-        int numbers [] = {0};
+        int numbers[] = new int[0];
+
         double averageExpected = 0;
         //When
         double average = ArrayOperations.getAverage(numbers);
         //Then
         Assert.assertEquals(averageExpected, average, 0.0001);
+
+
     }
-}
+
+
+    }
+
 
