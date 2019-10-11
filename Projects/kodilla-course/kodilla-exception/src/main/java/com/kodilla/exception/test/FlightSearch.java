@@ -2,26 +2,23 @@ package com.kodilla.exception.test;
 
 
 import java.util.HashMap;
-import java.util.Map;
-
-public class FlightSearch {
-
-    private  findFlight(Flight, flight) {
 
 
+class FlightSearch{
 
-            HashMap<String, Boolean> findFlight = new HashMap<>();
-            findFlight.put("Warszawa", true);
-            findFlight.put("Kopenhaga", true);
-            findFlight.put("Kamienczyk", false);
-            findFlight.put("Sydney", true);
+    public void findFlight(Flight flight) throws RouteNotFoundException {
+        HashMap<String, Boolean> airports = new HashMap<>();
+        airports.put("Warszawa", true);
+        airports.put("Kamienczyk", false);
+        airports.put("Modlin", true);
 
-
-            return findFlight;
-
+        if(airports.get(flight.getArrivalAirport()) && airports.get(flight.getDepartureAirport())){
+            System.out.println("Flight from: " + flight.getArrivalAirport() +" to: " +  flight.getDepartureAirport() + " is available.");
+        }
+        else {
+            throw new RouteNotFoundException();
         }
     }
 
+}
 
-
- */
