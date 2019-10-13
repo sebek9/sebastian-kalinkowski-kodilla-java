@@ -1,4 +1,4 @@
-package com.kodilla.stream.array;
+/*package com.kodilla.stream.array;
 
 import java.util.LinkedList;
 
@@ -208,8 +208,4 @@ System.out.println("Czas usuniecia ostatniego elementu: " + (end4 - begin4) + "m
 
     System.out.println("Wielkosc mapy: " + booksMap.size() + " Czas usuniecia: " + (end7 - begin7) + "ms");
    */
-
-    }
-
-}
 

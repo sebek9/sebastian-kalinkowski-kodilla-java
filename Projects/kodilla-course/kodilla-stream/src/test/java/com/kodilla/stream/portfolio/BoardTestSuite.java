@@ -3,6 +3,7 @@ package com.kodilla.stream.portfolio;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,7 +116,8 @@ public class BoardTestSuite {
         Assert.assertEquals(1, tasks.size());
         Assert.assertEquals("HQLs for analysis", tasks.get(0).getTitle());
     }
-    */
+
+
     @Test
     public void testAddTaskListFindLongTasks() {
         //Given
@@ -134,7 +136,7 @@ public class BoardTestSuite {
         //Then
         Assert.assertEquals(2, longTasks);
     }
-
+*/
     @Test
     public void testAddTaskListAverageWorkingOnTask(){
 
@@ -144,16 +146,24 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        double averageTask = project.getTaskLists().stream()
+        int daysSum = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
+                .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
+                .reduce(0, (sum, current)->sum+=current );
 
+        int taskNr = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
+                .map(t ->1)
+                .reduce(0, (sum, current)->sum+=current );
+
+        double average = daysSum/taskNr;
 
 
         //Then
-        Assert.assertEquals(10, averageTask,0.1);
-
-
+        Assert.assertEquals(10.0, average, 0.0001);
     }
 
 }
