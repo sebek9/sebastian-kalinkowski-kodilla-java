@@ -3,35 +3,46 @@ package com.kodilla.stream.world;
 import java.math.BigDecimal;
 
 public final class Country {
+    private final String name;
+    private final BigDecimal peopleQuantity;
 
-    private final String countryName;
-    private final BigDecimal peopleQty;
-
-    public Country(final String countryName, final BigDecimal peopleQty) {
-        this.countryName = countryName;
-        this.peopleQty = peopleQty;
+    public Country(final String name, final BigDecimal peopleQuantity) {
+        if (name == null || name.isEmpty() || peopleQuantity == null
+                || peopleQuantity.signum() != 1)
+            throw new IllegalArgumentException();
+        this.name = name;
+        this.peopleQuantity = peopleQuantity;
     }
 
-    public Country(final String countryName) {
-        this(countryName, new BigDecimal("1000001"));
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getPeopleQuantity() {
+        return peopleQuantity;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Country country = (Country) o;
-
-        return countryName.equals(country.countryName);
+        if (!name.equals(country.name)) return false;
+        return peopleQuantity.equals(country.peopleQuantity);
     }
 
     @Override
     public int hashCode() {
-        return countryName.hashCode();
+        int result = name.hashCode();
+        result = 31 * result + peopleQuantity.hashCode();
+        return result;
     }
 
-    public BigDecimal getPeopleQuantity(){
-        return peopleQty;
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + name + '\'' +
+                ", peopleQuantity=" + peopleQuantity +
+                '}';
     }
 }

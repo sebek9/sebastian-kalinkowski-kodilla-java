@@ -1,53 +1,43 @@
 package com.kodilla.stream.world;
 
-import org.junit.Assert;
 import org.junit.Test;
-
 import java.math.BigDecimal;
+
+import static org.junit.Assert.*;
 
 public class WorldTestSuite {
     @Test
-    public void testGetPeopleQuantity(){
+    public void testGetPeopleQuantity() {
+
+
+
         //Given
+
+
         World world = new World();
+        Continent europe = new Continent("Europe");
+        Continent africa = new Continent("Africa");
 
-        Continent europa = new Continent("Europa");
-        Continent asia = new Continent("Africa");
-        Continent australia = new Continent("Asia");
+        world.addContinent(europe);
+        world.addContinent(africa);
 
-        Country poland = new Country("Poland");
-        Country hungary = new Country("Hungary");
-        Country montenegro = new Country("Montenegro");
-        Country japan = new Country("Japan");
-        Country katar = new Country("Katar");
-        Country vietnam = new Country("Vietnam");
-        Country australiaCountry = new Country("Australia");
-        Country fiji = new Country("Fiji");
-        Country russia = new Country("Russia");
-
-        world.addContinent(europa);
-        world.addContinent(asia);
-        world.addContinent(australia);
-
-        europa.addCountry(poland);
-        europa.addCountry(hungary);
-        europa.addCountry(montenegro);
-        europa.addCountry(russia);
-
-        asia.addCountry(japan);
-        asia.addCountry(katar);
-        asia.addCountry(vietnam);
-        asia.addCountry(russia);
-
-        australia.addCountry(australiaCountry);
-        australia.addCountry(fiji);
 
         //When
+        europe.addCountry(new Country("Poland", new BigDecimal("38426000")));
+        europe.addCountry(new Country("Russia", new BigDecimal("142893540")));
+        europe.addCountry(new Country("Germany", new BigDecimal("82422299")));
+        europe.addCountry(new Country("Turkey", new BigDecimal("70413958")));
 
-        BigDecimal totalPeople = world.getPeopleQuantity();
-        //Then
-        BigDecimal totalPeopleExpected = new BigDecimal("9000009");
-        Assert.assertEquals(totalPeopleExpected, totalPeople);
+        africa.addCountry(new Country("Nigeria", new BigDecimal("131000000")));
+        africa.addCountry(new Country("Ethiopia", new BigDecimal("74777981")));
+        africa.addCountry(new Country("Egypt", new BigDecimal("78887007")));
+        africa.addCountry(new Country("RPA", new BigDecimal("44000000")));
+
+
+
+
+        //then
+        assertEquals(new BigDecimal("662820785"), world.getPeopleQuantity());
     }
 }
 

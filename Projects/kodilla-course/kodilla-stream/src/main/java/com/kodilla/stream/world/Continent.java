@@ -1,31 +1,51 @@
 package com.kodilla.stream.world;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class Continent {
+public final class Continent {
+    private final String name;
+    private final Set<Country> countries = new HashSet<>();
 
-    private final List<Country>listOfCountriesOnContinent = new ArrayList<>();
-    private final String continentName;
-
-
-    public Continent(String continentName) {
-        this.continentName = continentName;
+    public Continent(final String name) {
+        this.name = name;
     }
 
-    public String getContinentName() {
-        return continentName;
+    public String getName() {
+        return name;
     }
 
-    public List<Country> getListOfCountriesOnContinent() {
-        return new ArrayList<>(listOfCountriesOnContinent);
+    public void addCountry(Country country) {
+        if (country == null) {
+            throw new IllegalArgumentException();
+        }
+        countries.add(country);
     }
 
-    public boolean addCountry(Country country){
-        return listOfCountriesOnContinent.add(country);
+    public List<Country> getCountries(){
+        return new ArrayList<>(countries);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Continent continent = (Continent) o;
+        return name.equals(continent.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Continent{" +
+                "name='" + name + '\'' +
+                ", countries=" + countries +
+                '}';
     }
 }
-
 
 /*
 W utworzonym pakiecie utwórz klasy Country, Continent oraz World. Klasa Country
