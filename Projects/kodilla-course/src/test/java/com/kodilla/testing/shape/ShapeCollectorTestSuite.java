@@ -1,68 +1,75 @@
 package com.kodilla.testing.shape;
 
+
 import org.junit.*;
 
-class ShapeCollectorTestSuite{
-    private static int testCounter = 0;
+public class ShapeCollectorTestSuite {
+
+    @Before
+    public void before() {
+        System.out.println("Test Case: begin");
+    }
+
+    @After
+    public void after() {
+        System.out.println("Test Case: end");
+    }
 
     @BeforeClass
-    public static void beforeAllTests() {
-        System.out.println("This is the beginning of tests.");
+    public static void beforeClass() {
+        System.out.println("Test Suite: begin");
     }
 
     @AfterClass
-    public static void afterAllTests() {
-        System.out.println("All tests are finished.");
-    }
-
-    @Before
-    public void beforeEveryTest() {
-        testCounter++;
-        System.out.println("Preparing to execute test #" + testCounter);
+    public static void afterClass() {
+        System.out.println("Test Suite: end");
     }
 
     @Test
-    //Test 1 - weryfikacja metody addFigure
-
-    public void testAddFigure(){
+    public void testAddFigure() {
         //Given
-        ShapeCollector shape = new ShapeCollector("Square");
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle();
         //When
-        ShapeCollector.addFigure("Square");
+        boolean result = shapeCollector.addFigure(circle);
         //Then
-        Assert.assertEquals(1, meorda ktora sprawdzi liczbe figur);
-
+        Assert.assertTrue(result);
     }
 
-    public void testRemoveFigure(){
+    @Test
+    public void testRemoveFigure() {
         //Given
-        ShapeCollector shape = new ShapeCollector("Square");
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle();
+        shapeCollector.addFigure(circle);
         //When
-        ShapeCollector.removeFigure("Square");
+        boolean result = shapeCollector.removeFigure(circle);
         //Then
-        Assert.assertEquals(1, meorda ktora sprawdzi liczbe figur);
-
+        Assert.assertTrue(result);
     }
 
-    public void testGetFigure(){
+    @Test
+    public void testGetFigure() {
         //Given
-
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle();
+        shapeCollector.addFigure(circle);
         //When
-
+        Shape shape = shapeCollector.getFigure(0);
         //Then
-
-
+        Assert.assertEquals(circle, shape);
     }
 
-    public void testShowFigures(){
+    @Test
+    public void testShowFigures() {
         //Given
-
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle();
+        shapeCollector.addFigure(circle);
         //When
-
+        boolean result = shapeCollector.showFigures();
         //Then
-
-
+        Assert.assertTrue(result);
     }
-
 }
 
