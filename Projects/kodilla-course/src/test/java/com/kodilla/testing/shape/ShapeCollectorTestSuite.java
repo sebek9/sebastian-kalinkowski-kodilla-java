@@ -66,16 +66,6 @@ public class ShapeCollectorTestSuite {
         Assert.assertEquals(circle, shape);
     }
 
-    @Test
-    public void testShowFigures() {
-        //Given
-        ShapeCollector shapeList = new ShapeCollector();
-        Circle circle = new Circle();
-        shapeList.addFigure(circle);
-        //When
-        boolean result = shapeList.showFigures();
-        //Then
-        Assert.assertTrue(result);
-    }
+
 }
 
