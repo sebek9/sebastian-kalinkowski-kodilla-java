@@ -34,4 +34,8 @@ public class ShapeCollector {
         }
         return result;
     }
+    int size() {
+        return shapeList.size();
+    }
+
 }

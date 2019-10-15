@@ -1,4 +1,4 @@
-package com.kodilla.testing.library;
+/*package com.kodilla.testing.library;
 
 import org.junit.Test;
 
@@ -81,3 +81,21 @@ public class BookDirectoryTestSuite {
         assertTrue(false);
     }
 }
+
+@Test
+    public void testListBooksWithConditionMoreThan20() {
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf0Books = new ArrayList<Book>();
+
+        // When
+        List<Book> theListOfBooks0 = bookLibrary.listBooksWithCondition("ZeroBooks");
+
+        // Then
+
+        assertEquals(0, theListOfBooks0.size());
+        assertEquals(15, theListOfBooks15.size());
+        assertEquals(0, theListOfBooks40.size());
+    }
+*/
