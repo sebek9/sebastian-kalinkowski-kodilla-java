@@ -50,14 +50,3 @@ public class ForumStatistics  {
     }
 }
 
-/*
-public void showStatistics() {
-        System.out.println("Number of users: " + usersQuantity + "\nNumber of posts: " + postsQuantity +
-                "\nNumber of comments: " + commentsQuantity + "\nNumber of posts per user: "
-                + (postsPerUser == null ? "divinig by 0 is forbidden so such a factor doesn't exist" : postsPerUser)
-                + "\nNumber of comments per user: "
-                + (commentsPerUser == null ? "divinig by 0 is forbidden so such a factor doesn't exist" : commentsPerUser)
-                + "\nNumber of comments per post: "
-                + (commentsPerPost == null ? "divinig by 0 is forbidden so such a factor doesn't exist" : commentsPerPost));
-    }
- */
