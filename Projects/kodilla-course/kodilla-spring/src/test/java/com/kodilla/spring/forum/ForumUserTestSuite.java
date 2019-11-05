@@ -21,21 +21,3 @@ public class ForumUserTestSuite {
 
     }
 }
-
-
-
-
-/*
-Napisz test testGetUsername() pobierający z kontekstu aplikacji uchwyt do Beana klasy ForumUser.
-Test powinien pobierać username i sprawdzać przy pomocy asercji czy zwróconą wartością jest "John Smith".
-
- //Given
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Shape shape = context.getBean(Circle.class);
-        //When
-        String name = shape.getShapeName();
-        //Then
-        Assert.assertEquals("This is a circle.", name);
-
- */
