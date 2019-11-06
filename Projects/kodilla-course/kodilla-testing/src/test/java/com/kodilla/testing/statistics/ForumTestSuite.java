@@ -4,8 +4,6 @@ package com.kodilla.testing.statistics;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.kodilla.testing.statistics.ForumStatistics;
-import com.kodilla.testing.statistics.Statistics;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,13 +70,12 @@ public void testCalculateAdvStatistics(){
 
         //Then
 
-        Assert.assertEquals(0,forumStatistics.getCommentsPerposts(),0.01);
-        Assert.assertEquals(0,forumStatistics.getCommentsPerUser(),0.01);
-        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.01);
+        Assert.assertEquals(0,forumStatistics.getCommentsPerposts(),0.1);
+        Assert.assertEquals(0,forumStatistics.getCommentsPerUser(),0.1);
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.1);
 
     }
 
-    //13 kombinacji
 
     //liczba postów = 1000
 
@@ -93,9 +90,9 @@ public void testCalculateAdvStatistics(){
         //Then
         Assert.assertEquals(1000,forumStatistics.getPostsQuantity());
 
-        Assert.assertEquals(0,forumStatistics.getCommentsPerposts(),0.01);
-        Assert.assertEquals(0,forumStatistics.getCommentsPerUser(),0.01);
-        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.01);
+        Assert.assertEquals(0,forumStatistics.getCommentsPerposts(),0.1);
+        Assert.assertEquals(0,forumStatistics.getCommentsPerUser(),0.1);
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.1);
 
 
     }
@@ -106,10 +103,13 @@ public void testCalculateAdvStatistics(){
     public void testCalculateWhen0Comments(){
     //Given
         when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(new ArrayList<>());
         //When
         forumStatistics.calculateAdvStatistics(statisticsMock);
         //Then
-        Assert.assertEquals(0,forumStatistics.getCommentsQuantity());
+        Assert.assertEquals(0,forumStatistics.getCommentsQuantity(),0.1);
+        Assert.assertEquals(0, forumStatistics.getCommentsPerUser(), 0.1);
+        Assert.assertEquals(0, forumStatistics.getCommentsPerposts(), 0.1);
 
     }
 
@@ -128,9 +128,9 @@ public void testCalculateAdvStatistics(){
 
         //Then
 
-        Assert.assertEquals(0.5,forumStatistics.getCommentsPerposts(),0.0);
-        Assert.assertEquals(0, forumStatistics.getCommentsPerUser(),0.0);
-        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.0);
+        Assert.assertEquals(0.5,forumStatistics.getCommentsPerposts(),0.1);
+        Assert.assertEquals(0, forumStatistics.getCommentsPerUser(),0.1);
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.1);
 
     }
 
@@ -141,12 +141,15 @@ public void testCalculateAdvStatistics(){
     //Given
         when(statisticsMock.commentsCount()).thenReturn(40);
         when(statisticsMock.postsCount()).thenReturn(20);
+        when(statisticsMock.usersNames()).thenReturn(new ArrayList<>());
 
         //When
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        Assert.assertEquals(2.0,forumStatistics.getCommentsPerposts(),0.0);
+        Assert.assertEquals(2.0,forumStatistics.getCommentsPerposts(),0.1);
+        Assert.assertEquals(0, forumStatistics.getCommentsPerUser(),0.1);
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.1);
     }
 
     //liczba uzytkownikow = 0
@@ -160,7 +163,8 @@ public void testCalculateAdvStatistics(){
 
         //Then
         Assert.assertEquals(0,forumStatistics.getUsersQuantity());
-
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.1);
+        Assert.assertEquals(0,forumStatistics.getCommentsPerUser(),0.1);
     }
 
     //liczba uzytkownikow = 100
