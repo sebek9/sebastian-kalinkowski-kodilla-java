@@ -63,15 +63,22 @@ public void testCalculateAdvStatistics(){
     public void testCalculateWhen0Posts(){
         //Given
         when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(new ArrayList<>());
 
         //When
 
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        Assert.assertEquals(0,forumStatistics.getPostsQuantity());
+
+        Assert.assertEquals(0,forumStatistics.getCommentsPerposts(),0.01);
+        Assert.assertEquals(0,forumStatistics.getCommentsPerUser(),0.01);
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.01);
 
     }
+
+    //13 kombinacji
 
     //liczba postów = 1000
 
@@ -79,10 +86,18 @@ public void testCalculateAdvStatistics(){
     public void testCalculateWhen1000posts(){
     //Given
         when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(new ArrayList<>());
         //When
         forumStatistics.calculateAdvStatistics(statisticsMock);
         //Then
         Assert.assertEquals(1000,forumStatistics.getPostsQuantity());
+
+        Assert.assertEquals(0,forumStatistics.getCommentsPerposts(),0.01);
+        Assert.assertEquals(0,forumStatistics.getCommentsPerUser(),0.01);
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.01);
+
+
     }
 
     //liczba komentarzy = 0
@@ -106,6 +121,7 @@ public void testCalculateAdvStatistics(){
     //Given
         when(statisticsMock.commentsCount()).thenReturn(10);
         when(statisticsMock.postsCount()).thenReturn(20);
+        when(statisticsMock.usersNames()).thenReturn(new ArrayList<>());
 
         //When
         forumStatistics.calculateAdvStatistics(statisticsMock);
@@ -113,6 +129,8 @@ public void testCalculateAdvStatistics(){
         //Then
 
         Assert.assertEquals(0.5,forumStatistics.getCommentsPerposts(),0.0);
+        Assert.assertEquals(0, forumStatistics.getCommentsPerUser(),0.0);
+        Assert.assertEquals(0,forumStatistics.getPostsPerUser(),0.0);
 
     }
 

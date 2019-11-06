@@ -5,9 +5,9 @@ public class ForumStatistics  {
     private int usersQuantity = 0;
     private int postsQuantity = 0;
     private int commentsQuantity = 0;
-    private Double postsPerUser = null;
-    private Double commentsPerUser = null;
-    private Double commentsPerPosts = null;
+    private Double postsPerUser = 0.0;
+    private Double commentsPerUser = 0.0;
+    private Double commentsPerPosts = 0.0;
 
     public void calculateAdvStatistics(Statistics statistics){
         usersQuantity = statistics.usersNames().size();
