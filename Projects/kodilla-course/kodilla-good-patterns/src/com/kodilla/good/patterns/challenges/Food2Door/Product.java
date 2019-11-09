@@ -5,16 +5,16 @@ public class Product {
     private String name;
     private Integer quantity;
 
-    public Product(String name, Integer quantinty) {
+    public Product(String name, Integer quantity) {
         this.name = name;
-        this.quantity = quantinty;
+        this.quantity = quantity;
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getQuantinty() {
+    public Integer getQuantity() {
         return quantity;
     }
 }

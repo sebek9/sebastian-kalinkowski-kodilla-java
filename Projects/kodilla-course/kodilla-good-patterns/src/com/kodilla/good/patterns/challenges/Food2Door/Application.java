@@ -1,12 +1,14 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
 public class Application {
+    public static void main(String[] args) {
+    OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
+    OrderRequest orderRequest = orderRequestRetriever.retrieve();
+
+    OrderProcessor orderProcessor = new OrderProcessor(
+            new ConfirmationService(), new ProductOrderService(),
+            new ProductOrderRepository());
+    orderProcessor.process(orderRequestRetriever.retrieve());
 }
 
-
-/*
-Pobieramy informacje o dostawcy, oraz ilości i rodzaju produktu,
-Następnie każdy z producentów posiada metodę process(), która pozwala na zrealizowanie tego zamówienia w danym sklepie
-Dalsza część również wygląda wszędzie tak samo, zwracane są informacje czy udało się zrealizować zamówienie
-
- */
+}

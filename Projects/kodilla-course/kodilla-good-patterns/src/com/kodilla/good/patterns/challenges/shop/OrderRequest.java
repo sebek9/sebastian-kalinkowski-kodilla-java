@@ -8,6 +8,7 @@ public class OrderRequest {
     private Product product;
 
 
+
     public OrderRequest(final User user, final LocalDateTime orderTime, final Product product) {
         this.user = user;
         this.orderTime = orderTime;
