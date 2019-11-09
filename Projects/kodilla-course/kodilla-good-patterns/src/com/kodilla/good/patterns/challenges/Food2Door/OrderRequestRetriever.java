@@ -1,8 +1,5 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class OrderRequestRetriever {
     public OrderRequest retrieve(){
 

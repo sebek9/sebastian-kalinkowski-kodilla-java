@@ -8,7 +8,7 @@ public class Application {
     OrderProcessor orderProcessor = new OrderProcessor(
             new ConfirmationService(), new ProductOrderService(),
             new ProductOrderRepository());
-    orderProcessor.process(orderRequestRetriever.retrieve());
+    orderProcessor.process(orderRequest);
 }
 
 }
