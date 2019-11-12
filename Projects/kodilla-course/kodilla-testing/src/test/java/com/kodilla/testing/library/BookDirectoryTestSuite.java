@@ -1,21 +1,17 @@
 package com.kodilla.testing.library;
-/*
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.*;
 
-import static org.junit.Assert.assertTrue;
-
 public class BookDirectoryTestSuite {
 
-    private LibraryDatabase libraryDatabase;
+    private LibraryDatabase libraryDatabaseMock;
     private BookLibrary bookLibrary;
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
@@ -27,88 +23,57 @@ public class BookDirectoryTestSuite {
         return resultList;
     }
 
-
-
-
 @Before
-public void before(){
+public void before() {
     //Given
-    libraryDatabaseMock=mock(LibraryDatabase.class);
-    bookLibrary=new BookLibrary(libraryDatabaseMock);
-
-    @Test
-    public void testListBooksWithConditionsReturnList() {
-        // Given
-        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
-        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOfBooks = new ArrayList<Book>();
-        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
-        Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
-        Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
-        Book book4 = new Book("Secrets of Java", "Ian Tenewitch", 2010);
-        resultListOfBooks.add(book1);
-        resultListOfBooks.add(book2);
-        resultListOfBooks.add(book3);
-        resultListOfBooks.add(book4);
-        when(libraryDatabaseMock.listBooksWithCondition("Secret"))
-                .thenReturn(resultListOfBooks);
-
-        // When
-        List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
-
-        // Then
-        Assert.assertEquals(4, theListOfBooks.size());
-    }
-
-    @Test
-    public void testListBooksWithConditionMoreThan20() {
-        // Given
-        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
-        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf0Books = new ArrayList<Book>();
-        List<Book> resultListOf15Books = generateListOfNBooks(15);
-        List<Book> resultListOf40Books = generateListOfNBooks(40);
-        when(libraryDatabaseMock.listBooksWithCondition(anyString()))
-                .thenReturn(resultListOf15Books);
-        when(libraryDatabaseMock.listBooksWithCondition("ZeroBooks"))
-                .thenReturn(resultListOf0Books);
-        when(libraryDatabaseMock.listBooksWithCondition("FortyBooks"))
-                .thenReturn(resultListOf40Books);
-
-        // When
-        List<Book> theListOfBooks0 = bookLibrary.listBooksWithCondition("ZeroBooks");
-        List<Book> theListOfBooks15 = bookLibrary.listBooksWithCondition("Any title");
-        List<Book> theListOfBooks40 = bookLibrary.listBooksWithCondition("FortyBooks");
-        // Then
-
-        Assert.assertEquals(0, theListOfBooks0.size());
-        Assert.assertEquals(15, theListOfBooks15.size());
-        Assert.assertEquals(0, theListOfBooks40.size());
-    }
-
-    @Test
-    public void testListBooksWithConditionFragmentShorterThan3() {
-        // Given
-        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
-        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf10Books = generateListOfNBooks(10);
-        when(libraryDatabaseMock.listBooksWithCondition(anyString()))
-                .thenReturn(resultListOf10Books);
-
-        // When
-        List<Book> theListOfBooks10 = bookLibrary.listBooksWithCondition("An");
-
-        // Then
-        Assert.assertEquals(0, theListOfBooks10.size());
-        verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
-    }
-
-    @Test
-
-    public void testListBooksInHandsOf(){
-
-
-    }
-
+    libraryDatabaseMock = mock(LibraryDatabase.class);
+    bookLibrary = new BookLibrary(libraryDatabaseMock);
 }
-*/
+
+  //  gdy użytkownik nie ma wypożyczonych żadnych książek,
+
+    @Test
+    public void testListBooksInHandsOf0Books() {
+        // Given
+        LibraryUser libraryUser = new LibraryUser("Jan", "Kowalski", "90010212345");
+        when(libraryDatabaseMock.listBooksInHandsOfTask(any(LibraryUser.class)))
+                .thenReturn(new ArrayList<>());
+        // When
+        List<Book> theListOfBorrowedBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+        // Then
+        Assert.assertEquals(0, theListOfBorrowedBooks.size());
+        verify(libraryDatabaseMock, times(1)).listBooksInHandsOfTask(libraryUser);
+    }
+
+    //gdy ma wypożyczoną jedną książkę
+    @Test
+    public void testListBooksInHandsOf1Book() {
+        // Given
+        LibraryUser libraryUser = new LibraryUser("Piotr", "Kowal", "98010212345");
+        when(libraryDatabaseMock.listBooksInHandsOfTask(any(LibraryUser.class)))
+                .thenReturn(generateListOfNBooks(1));
+        // When
+        List<Book> theListOfBorrowedBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        // Then
+        Assert.assertEquals(1, theListOfBorrowedBooks.size());
+        verify(libraryDatabaseMock, times(1)).listBooksInHandsOfTask(libraryUser);
+    }
+
+    //gdy ma wypożyczonych 5 książek
+    @Test
+    public void testListBooksInHandsOf5Books() {
+        // Given
+        LibraryUser libraryUser = new LibraryUser("Hubert", "Matynia", "86010212345");
+        when(libraryDatabaseMock.listBooksInHandsOfTask(libraryUser))
+                .thenReturn(generateListOfNBooks(5));
+
+        // When
+        List<Book> theListOfBorrowedBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        // Then
+        Assert.assertEquals(5, theListOfBorrowedBooks.size());
+        verify(libraryDatabaseMock, times(1)).listBooksInHandsOfTask(libraryUser);
+    }
+}
+

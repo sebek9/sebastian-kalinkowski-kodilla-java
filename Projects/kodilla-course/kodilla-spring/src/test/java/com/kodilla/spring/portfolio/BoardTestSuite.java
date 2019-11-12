@@ -15,7 +15,7 @@ public class BoardTestSuite {
     @Test
     public void testTaskAdd() {
      //Given
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.portfolio");
+        ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
     //When
         Board board = context.getBean(Board.class);
 
