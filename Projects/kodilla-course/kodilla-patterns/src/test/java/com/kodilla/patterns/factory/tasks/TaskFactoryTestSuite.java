@@ -1,7 +1,5 @@
 package com.kodilla.patterns.factory.tasks;
 
-import com.kodilla.patterns.factory.Shape;
-import com.kodilla.patterns.factory.ShapeFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,9 +14,10 @@ public class TaskFactoryTestSuite   {
 
         //When
         Task drive=factory.makeTask(TaskFactory.DRIVE);
+        drive.executeTask();
         //Then
         Assert.assertEquals("Drive", drive.getTaskName());
-        Assert.assertEquals(false, drive.isTaskExecuted());
+        Assert.assertEquals(true, drive.isTaskExecuted());
         System.out.println(drive.getTaskName() + " Executed: "  + drive.isTaskExecuted());
     }
 
@@ -31,6 +30,7 @@ public class TaskFactoryTestSuite   {
 
         //When
         Task paint=factory.makeTask(TaskFactory.PAINT);
+        paint.executeTask();
 
         //Then
         Assert.assertEquals("Paint", paint.getTaskName());
@@ -46,10 +46,11 @@ public class TaskFactoryTestSuite   {
 
         //When
         Task shop = factory.makeTask(TaskFactory.SHOP);
+        shop.executeTask();
 
         //Then
         Assert.assertEquals("Buy",shop.getTaskName());
-        Assert.assertEquals(true, shop.isTaskExecuted());
+        Assert.assertEquals(false, shop.isTaskExecuted());
         System.out.println(shop.getTaskName() + " Executed: "  + shop.isTaskExecuted());
     }
 }
