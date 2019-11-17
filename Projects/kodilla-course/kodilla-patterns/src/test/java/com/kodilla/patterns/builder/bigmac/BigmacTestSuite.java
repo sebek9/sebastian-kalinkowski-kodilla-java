@@ -1,10 +1,8 @@
 package com.kodilla.patterns.builder.bigmac;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.LineInputStream;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
 
 public class BigmacTestSuite {
 
