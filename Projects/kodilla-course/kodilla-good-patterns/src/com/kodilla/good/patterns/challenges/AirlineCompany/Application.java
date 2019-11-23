@@ -20,9 +20,7 @@ public class Application {
 
             System.out.println("Select another flight.");
 
-        System.out.println(searchEngine.getFlight().entrySet().stream()
-                .flatMap(entry -> entry.getValue().stream())
-                .collect(Collectors.joining("!","","")));
+
 
 
 

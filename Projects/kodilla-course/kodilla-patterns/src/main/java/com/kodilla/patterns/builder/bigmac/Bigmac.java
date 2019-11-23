@@ -63,8 +63,6 @@ public final class Bigmac {
         }
         public BigmacBuilder ingredient(String ingredient) {
             ingredients.add(ingredient);
-            ingredients.add(ingredient);
-            ingredients.add(ingredient);
             return this;
         }
 
