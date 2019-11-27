@@ -60,4 +60,26 @@ public final class Task {
     private void setDuration(int duration) {
         this.duration = duration;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (id != task.id) return false;
+        if (duration != task.duration) return false;
+        if (description != null ? !description.equals(task.description) : task.description != null) return false;
+        return created != null ? created.equals(task.created) : task.created == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (created != null ? created.hashCode() : 0);
+        result = 31 * result + duration;
+        return result;
+    }
 }

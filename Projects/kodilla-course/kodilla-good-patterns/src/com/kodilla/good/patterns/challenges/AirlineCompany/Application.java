@@ -1,29 +1,24 @@
 package com.kodilla.good.patterns.challenges.AirlineCompany;
 
-import com.kodilla.good.patterns.challenges.Stream.MovieStore;
+import java.util.Set;
 
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Application {
 
     public static void main(String[] args) {
 
-        FlightSearch searchEngine = new FlightSearch();
+        FlightSearch flightSearch = new FlightSearch();
+        Set<Flight> list = flightSearch.getList();
 
-
-        searchEngine.getFlight();
-
-        System.out.println(searchEngine.getFlight());
-
-            System.out.println("Flight is not possible.");
-
-            System.out.println("Select another flight.");
-
-
-
-
-
+        SearchService service1 = new SearchService();
+        service1.searchDepartureAirport(list, "Kamienczyk");
+        System.out.println();
+        SearchService service2 = new SearchService();
+        service2.searchArrivalAirport(list, "Gdansk");
+        System.out.println();
+        SearchService service3 = new SearchService();
+        service3.searchThrough(list, "Warszawa", "Kamienczyk");
+        System.out.println();
 
         }
     }

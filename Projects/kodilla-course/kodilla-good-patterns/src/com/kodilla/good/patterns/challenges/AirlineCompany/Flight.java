@@ -3,8 +3,8 @@ package com.kodilla.good.patterns.challenges.AirlineCompany;
 public class Flight {
 
 
-    String departureAirport;
-    String arrivalAirport;
+  private  String departureAirport;
+    private String arrivalAirport;
 
     public Flight(String departureAirport, String arrivalAirport) {
         this.departureAirport = departureAirport;
