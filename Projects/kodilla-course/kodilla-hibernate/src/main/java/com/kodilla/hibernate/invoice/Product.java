@@ -28,13 +28,6 @@ public class Product {
         return id;
     }
 
-    @OneToMany(
-            targetEntity = Item.class,
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-
     public void setId(int id) {
         this.id = id;
     }
@@ -49,6 +42,13 @@ public class Product {
         this.name = name;
     }
 
+
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     public List<Item> getItems() {
         return items;
     }

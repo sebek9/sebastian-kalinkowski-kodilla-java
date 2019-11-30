@@ -32,8 +32,6 @@ public class InvoiceDaoTestSuite {
     public void testTaskDaoSave() {
         //Given
         Product productOne = new Product("Komputer");
-        Product productTwo = new Product("Tablet");
-
 
         Item item1 = new Item(new BigDecimal(2),new BigDecimal(15),8 );
         Item item2 = new Item(new BigDecimal(2),new BigDecimal(15),8);
@@ -59,11 +57,11 @@ public class InvoiceDaoTestSuite {
 
         //CleanUp
         try {
-            productDao.deleteAll();
-            itemDao.deleteAll();
-            invoiceDao.deleteAll();
-        } catch (Exception e) {
+            invoiceDao.deleteById(id);
 
+
+        } catch (Exception e) {
+            //do nothing
         }
 
     }
