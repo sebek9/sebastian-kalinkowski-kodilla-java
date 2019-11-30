@@ -55,7 +55,7 @@ public class TaskDaoTestSuite {
         taskDao.deleteById(id);
     }
 
-/*
+
     @Test
     public void testTaskDaoSaveWithFinancialDetails() {
         //Given
@@ -72,7 +72,7 @@ public class TaskDaoTestSuite {
         //CleanUp
         //taskDao.deleteById(id);
     }
-    */
+
 
 }
 
