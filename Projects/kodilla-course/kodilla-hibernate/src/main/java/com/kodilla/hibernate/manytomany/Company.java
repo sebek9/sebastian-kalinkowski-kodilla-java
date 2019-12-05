@@ -5,6 +5,13 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name="Company.retrieveSubstring",
+        query=  "Select * FROM companies " +
+                " WHERE SUBSTRING(COMPANY_NAME,1,3) = :COMPANY_NAME",
+        resultClass = Company.class
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -22,7 +29,7 @@ public class Company {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "COMPANY_ID", unique = true)
+    @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
