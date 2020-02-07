@@ -60,7 +60,7 @@ public class FacadeTestSuit {
         employeeDao.save(johnSmith);
         employeeDao.save(stephanieClarckson);
         employeeDao.save(lindaClarckson);
-        List<Employee> employees = facadeManyToMany.findEmployees("clarck");
+        List<Employee> employees = facadeManyToMany.findEmployees("son");
 
         //then
         Assert.assertEquals(2, employees.size());
