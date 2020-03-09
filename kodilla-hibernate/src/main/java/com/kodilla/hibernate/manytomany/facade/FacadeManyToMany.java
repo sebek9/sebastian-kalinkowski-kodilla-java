@@ -20,6 +20,7 @@ public class FacadeManyToMany {
 
         public List<Company> findCompanies(String letters) {
             return companies.findByFewLetters("%" + letters + "%");
+            //BEZPOSREDNIO W ZAPYTANIU
         }
 
         public List<Employee> findEmployees(String letters) {
